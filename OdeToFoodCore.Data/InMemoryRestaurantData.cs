@@ -19,7 +19,7 @@ namespace OdeToFoodCore.Data
             };
         }
 
-        public IEnumerable<Restaurant> GetByName(string name = null)
+        public IEnumerable<Restaurant> GetRestaurantsByName(string name = null)
         {
             return from r in restaurants
                    where string.IsNullOrEmpty(name) || r.Name.StartsWith(name)
