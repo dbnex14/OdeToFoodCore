@@ -7,4 +7,9 @@
   <ItemGroup>
     <ProjectReference Include="..\OdeToFoodCore.Core\OdeToFoodCore.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.4" />
+  </ItemGroup>
 </Project>
