@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OdeToFoodCore.Data;
@@ -25,7 +26,20 @@ namespace OdeToFoodCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
+            services.AddDbContextPool<OdeToFoodDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("OdeToFoodDb"));
+            });
+
+            // Replace mock data with real data from database and instead of using
+            // AddSingleton, use AddScoped to have your services scoped to a particular
+            // HttpRequest so every time the framework hands out SqlRestaurantData, it
+            // will hand out the same instance of SqlRestaurantData for a single request.
+            // When next request comes in, it will be new SqlRestaurantData.  This allows
+            // DbContext that is working behind the scenes to collect all the changes
+            // that are needed for a single request.
+            //services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
+            services.AddScoped<IRestaurantData, SqlRestaurantData>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
