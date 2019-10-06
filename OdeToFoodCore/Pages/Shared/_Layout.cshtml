@@ -45,6 +45,10 @@
         @RenderBody()
         <hr />
         <footer>
+            <!-- executes RestaurantCountViewComponent code and places its Count
+                here in footer of _Layout page so all pages show it-->
+            <vc:restaurant-count></vc:restaurant-count>
+            @RenderSection("footer", required: false)
             <p>&copy; 2019 - OdeToFoodCore</p>
         </footer>
     </div>

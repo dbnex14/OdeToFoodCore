@@ -16,6 +16,10 @@
 
   <ItemGroup>
     <Folder Include="Pages\Restaurants\" />
+    <Folder Include="ViewComponents\" />
+    <Folder Include="Pages\Shared\Components\" />
+    <Folder Include="Pages\Shared\Components\RestaurantCount\" />
+    <Folder Include="Pages\R2\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OdeToFoodCore.Data\OdeToFoodCore.Data.csproj">

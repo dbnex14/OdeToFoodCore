@@ -1,0 +1,29 @@
+﻿@page "{restaurantId}"
+<!--so this page will require restaurantId in route, hence we add it to page directive -->
+
+@model DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+    <!-- this means we dont want to use the layout page, hence we have the html
+        page code below which tipically is taken care by the layout page. 
+    Layout = "_Layout2";
+    But if commented out, then it uses layout that is set up in _ViewStart file.
+    In that case, we dont need the <!DOCTYPE html><html><head><body> tags below
+    but just our formatting tags like <h2>, <div>, <form>...-->
+}
+
+
+<h2>Delete</h2>
+<div class="alert alert-danger">
+    Are you sure you want to delete @Model.Restaurant.Name?
+</div>
+<!--Give user Yes button which is POST.  By default, if we do not specify action
+    attribute here, the form will post back to the same Url that it came from, 
+    so, in this case, if user is viewing /restaurants/delete/3, and they click
+    on button Yes to submit this form, this form will post back to that same Url
+    and we should receive that post in the page model's OnPost method.-->
+<form method="post">
+    <!-- here we use a button for Yes and anchor that appers like button for Cancel-->
+    <button type="submit" class="btn btn-danger">Yes!</button>
+    <a asp-page="List" class="btn btn-default">Cancel</a>
+</form>
