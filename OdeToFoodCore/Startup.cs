@@ -67,6 +67,7 @@ namespace OdeToFoodCore
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseNodeModules(env); // from Scotts Nugget OdeToCode.UseNodeModules
             app.UseCookiePolicy();
 
             app.UseMvc();

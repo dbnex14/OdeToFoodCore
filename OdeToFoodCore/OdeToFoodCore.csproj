@@ -12,6 +12,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" />
+    <PackageReference Include="OdeToCode.UseNodeModules" Version="1.0.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +20,7 @@
     <Folder Include="ViewComponents\" />
     <Folder Include="Pages\Shared\Components\" />
     <Folder Include="Pages\Shared\Components\RestaurantCount\" />
+    <Folder Include="Api\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OdeToFoodCore.Data\OdeToFoodCore.Data.csproj">
@@ -26,6 +28,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="**/*" />
+    <None Include="wwwroot\OdeToFood.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\OdeToFood.png" />
   </ItemGroup>
 </Project>
