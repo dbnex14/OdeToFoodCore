@@ -3,6 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
+    
+  <Target Name="PostBuild" AfterTargets="ComputeFilesToPublish">
+       <Exec Command="npm install" />
+  </Target>
+    
+  <ItemGroup>
+    <Content Include="node_modules/**" CopyToPublishDirectory="PreserveNewest" />      
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App">
