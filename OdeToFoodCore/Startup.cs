@@ -65,12 +65,30 @@ namespace OdeToFoodCore
                 app.UseHsts();
             }
 
+            app.Use(SayHelloMiddleware); // add our simple SayHelloMiddleware
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseNodeModules(env); // from Scotts Nugget OdeToCode.UseNodeModules
             app.UseCookiePolicy();
 
             app.UseMvc();
+        }
+
+        private RequestDelegate SayHelloMiddleware(RequestDelegate next)
+        {
+            return async ctx => 
+            {
+                if (ctx.Request.Path.StartsWithSegments("/hello"))
+                {
+                    await ctx.Response.WriteAsync("Hello, World from my middleware");
+                }
+                else 
+                {
+                    await next(ctx);
+
+                }
+            };
         }
     }
 }
